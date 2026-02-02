@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SERVICIO INTEGRAL M.S. | Logística y Mercado Flex</title>
+    <title>SERVICIO INTEGRAL M.S. | Cotizador</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -111,6 +111,16 @@
             font-weight: bold;
             transition: all 0.2s;
         }
+        
+        .promo-badge {
+            background: #dcfce7;
+            color: #166534;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
@@ -162,7 +172,10 @@
             <!-- 1. Paquetes -->
             <div class="mb-10">
                 <div class="flex items-center justify-between mb-4">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] italic">1. Tamaño de Carga</label>
+                    <div class="flex flex-col">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] italic">1. Tamaño de Carga</label>
+                        <span id="promo-notice" class="hidden promo-badge mt-1 w-fit">¡Promo 3+ unidades: Sin costo de ruta!</span>
+                    </div>
                     <div class="flex items-center bg-slate-100 p-1 rounded-xl">
                          <button onclick="changeQty(-1)" class="counter-btn shadow-sm text-slate-400 hover:text-slate-600">-</button>
                          <span id="qty-display" class="w-10 text-center text-lg font-black italic">1</span>
@@ -249,9 +262,9 @@
                     <div id="tax-form" class="expandable space-y-3">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <select id="tax-type" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
-                                <option value="B">Factura B</option>
-                                <option value="A">Factura A</option>
-                                <option value="C">Factura C</option>
+                                <option value="Factura B">Factura B</option>
+                                <option value="Factura A">Factura A</option>
+                                <option value="Factura C">Factura C</option>
                             </select>
                             <input type="number" id="tax-id" placeholder="CUIT / CUIL" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
                         </div>
@@ -269,13 +282,21 @@
                     <input type="tel" id="cust-phone" placeholder="WhatsApp (Ej: 341...)" class="input-styled text-sm">
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <select id="payment-method" class="input-styled text-sm">
+                    <select id="payment-method" onchange="toggleTransferData()" class="input-styled text-sm">
                         <option value="" disabled selected>Medio de Pago...</option>
                         <option value="Efectivo en Origen">Efectivo en Origen</option>
                         <option value="Efectivo en Destino">Efectivo en Destino</option>
                         <option value="Billetera Virtual / Transferencia">Billetera Virtual / Transferencia</option>
                     </select>
                     <input type="text" id="pkg-desc" placeholder="¿Qué llevamos?" class="input-styled text-sm">
+                </div>
+                
+                <!-- Datos de Transferencia -->
+                <div id="transfer-data" class="expandable bg-orange-50 p-4 rounded-2xl border border-orange-100 text-[11px]">
+                    <p class="font-bold text-orange-800 uppercase mb-2">Datos para Transferencia:</p>
+                    <p><strong>Nombre y Apellido:</strong> Mendosa Cosmea Milton Hernan</p>
+                    <p><strong>DNI:</strong> 34.701.759</p>
+                    <p><strong>Alias:</strong> servicioms.mp</p>
                 </div>
             </div>
 
@@ -297,9 +318,16 @@
         let quantity = 1;
         const VALOR_SALTO = 400;
 
+        let orderCounter = parseInt(localStorage.getItem('ms_order_count')) || 1;
+
         function changeQty(val) {
             quantity = Math.max(1, quantity + val);
             document.getElementById('qty-display').innerText = quantity;
+            
+            const promo = document.getElementById('promo-notice');
+            if (quantity >= 3) promo.classList.remove('hidden');
+            else promo.classList.add('hidden');
+            
             updatePrice();
         }
 
@@ -307,6 +335,13 @@
             const form = document.getElementById('tax-form');
             if (document.getElementById('invoice-toggle').checked) form.classList.add('open');
             else form.classList.remove('open');
+        }
+
+        function toggleTransferData() {
+            const val = document.getElementById('payment-method').value;
+            const box = document.getElementById('transfer-data');
+            if (val === "Billetera Virtual / Transferencia") box.classList.add('open');
+            else box.classList.remove('open');
         }
 
         function setSize(label, base, el) {
@@ -320,8 +355,16 @@
             const sIdx = document.getElementById('ori-loc').value;
             const eIdx = document.getElementById('des-loc').value;
             if (!currentSize.label || sIdx === "" || eIdx === "") return;
+            
             const jumpCount = Math.abs(parseInt(sIdx) - parseInt(eIdx));
-            let total = (quantity >= 3) ? (currentSize.base * quantity) : (currentSize.base * quantity) + (jumpCount * VALOR_SALTO);
+            
+            let total = 0;
+            if (quantity >= 3) {
+                total = (currentSize.base * quantity);
+            } else {
+                total = (currentSize.base * quantity) + (jumpCount * VALOR_SALTO);
+            }
+            
             document.getElementById('final-price').innerText = `$${Math.round(total).toLocaleString('es-AR')}`;
         }
 
@@ -334,7 +377,8 @@
 
         async function requestOrder() {
             const f = {
-                size: currentSize.label, qty: quantity,
+                size: currentSize.label, 
+                qty: quantity,
                 oriLoc: document.getElementById('ori-loc').value,
                 desLoc: document.getElementById('des-loc').value,
                 oriAddr: document.getElementById('ori-address').value.trim(),
@@ -345,50 +389,52 @@
                 payment: document.getElementById('payment-method').value
             };
 
-            if (!f.size || !f.oriLoc || !f.desLoc || !f.oriAddr || !f.desAddr || !f.name || !f.phone || !f.payment) {
+            if (!f.size || f.oriLoc === "" || f.desLoc === "" || !f.oriAddr || !f.desAddr || !f.name || !f.phone || !f.payment) {
                 showAlert("Por favor, completa todos los campos requeridos.");
                 return;
             }
 
-            let taxMsg = "";
-            if (document.getElementById('invoice-toggle').checked) {
-                taxMsg = `%0A%0A🧾 *DATOS DE FACTURACIÓN:*%0A- CUIT: ${document.getElementById('tax-id').value}%0A- RAZÓN: ${document.getElementById('tax-name').value}`;
-            }
+            const locA = document.getElementById('ori-loc').options[document.getElementById('ori-loc').selectedIndex].text;
+            const locB = document.getElementById('des-loc').options[document.getElementById('des-loc').selectedIndex].text;
 
-            // Datos de transferencia con separador visual para el cliente
-            let paymentDetails = "";
-            if (f.payment === "Billetera Virtual / Transferencia") {
-                paymentDetails = `%0A%0A━━━━━━━━━━━━━━━━━━━━%0A🔔 *INFO PARA EL CLIENTE:*%0A━━━━━━━━━━━━━━━━━━━━%0A💰 *Datos para abonar tu envío:*%0A%0A📌 *Titular:* Mendosa Cosmea Milton Hernán%0A📌 *Alias:* servicioms.mp%0A📌 *CUIT/CUIL:* 20-34701759-1%0A📌 *Email:* mendosacosmea@gmail.com%0A%0A✅ _Por favor, enviá el comprobante por acá una vez realizado._%0A━━━━━━━━━━━━━━━━━━━━`;
+            let invoiceText = "No";
+            if (document.getElementById('invoice-toggle').checked) {
+                invoiceText = `Sí (${document.getElementById('tax-type').value})\n` +
+                              `*DATOS FISCALES:*\n` +
+                              `- *CUIT:* ${document.getElementById('tax-id').value}\n` +
+                              `- *Razón:* ${document.getElementById('tax-name').value}\n` +
+                              `- *Domicilio:* ${document.getElementById('tax-address').value}\n` +
+                              `- *Email:* ${document.getElementById('tax-email').value}`;
             }
 
             document.getElementById('ai-loading').style.display = 'flex';
             await new Promise(r => setTimeout(r, 800));
             document.getElementById('ai-loading').style.display = 'none';
 
-            const locA = document.getElementById('ori-loc').options[document.getElementById('ori-loc').selectedIndex].text;
-            const locB = document.getElementById('des-loc').options[document.getElementById('des-loc').selectedIndex].text;
-            
-            const msg = `🚛 *NUEVA SOLICITUD DE ENVÍO*` +
-                
-                        `👤 *CLIENTE:*${f.name}`
-                        +
-                        `📊 *CARGA:*${f.qty} x ${f.size}` +
-                        +
-                        `📍 *RETIRO:* ${locA} - ${f.oriAddr}`
-                        +
-                        `🏁 *ENTREGA:*${locB} - ${f.desAddr}`
-                        +
-                        `💳 *PAGO:*${f.payment}`
-                        +
-                        `💰 *TOTAL:${document.getElementById('final-price').innerText}*` + 
-                        taxMsg + paymentDetails;
+            // Generar enlace de RUTA COMPLETA de Google Maps (Origen a Destino)
+            const origenQuery = encodeURIComponent(f.oriAddr + ", " + locA + ", Santa Fe, Argentina");
+            const destinoQuery = encodeURIComponent(f.desAddr + ", " + locB + ", Santa Fe, Argentina");
+            const mapRoute = `https://www.google.com/maps/dir/?api=1&origin=${origenQuery}&destination=${destinoQuery}&travelmode=driving`;
+
+            // Formato de mensaje para WhatsApp
+            const msg = `🚀 *NUEVA SOLICITUD DE ENVÍO*\n\n` +
+                        `*PEDIDO N°:* ${orderCounter}\n` +
+                        `*TIPO:* ${f.size} (${f.qty} unidad/es)\n\n` +
+                        `📍 *RETIRO:* ${f.oriAddr}, ${locA}\n` +
+                        `🏁 *ENTREGA:* ${f.desAddr}, ${locB}\n\n` +
+                        `🛣️ *RUTA EN MAPS:* ${mapRoute}\n\n` +
+                        `📄 *FACTURA:* ${invoiceText}\n` +
+                        `👤 *CLIENTE:* ${f.name}\n` +
+                        `📞 *TEL:* ${f.phone}\n` +
+                        `💰 *PAGO:* ${f.payment}\n` +
+                        `📦 *CONTENIDO:* ${f.desc || "Sin descripción"}\n\n` +
+                        `💵 *TOTAL ESTIMADO:* ${document.getElementById('final-price').innerText}`;
+
+            orderCounter++;
+            localStorage.setItem('ms_order_count', orderCounter);
 
             window.open(`https://wa.me/5493413753881?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
-
 </html>
-
-
-
