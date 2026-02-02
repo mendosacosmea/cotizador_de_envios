@@ -369,16 +369,19 @@
             const locB = document.getElementById('des-loc').options[document.getElementById('des-loc').selectedIndex].text;
             
             const msg = `🚛 *NUEVA SOLICITUD DE ENVÍO*` +
-                        `👤 *CLIENTE:* ${f.name}` +
-                        `📊 *CARGA:* ${f.qty} x ${f.size}` +
-                        `━━━━━━━━━━━━━━━━━━━━` +
-                        `📍 *RETIRO:* ${locA} - ${f.oriAddr}` +
-                        `🏁 *ENTREGA:* ${locB} - ${f.desAddr}` +
-                        `━━━━━━━━━━━━━━━━━━━━` +
-                        `💳 *PAGO:* ${f.payment}` +
-                        `💰 *TOTAL: ${document.getElementById('final-price').innerText}*` + 
-                        taxMsg + 
-                        paymentDetails;
+                
+                        `👤 *CLIENTE:*${f.name}`
+                        +
+                        `📊 *CARGA:*${f.qty} x ${f.size}` +
+                        +
+                        `📍 *RETIRO:* ${locA} - ${f.oriAddr}`
+                        +
+                        `🏁 *ENTREGA:*${locB} - ${f.desAddr}`
+                        +
+                        `💳 *PAGO:*${f.payment}`
+                        +
+                        `💰 *TOTAL:${document.getElementById('final-price').innerText}*` + 
+                        taxMsg + paymentDetails;
 
             window.open(`https://wa.me/5493413753881?text=${encodeURIComponent(msg)}`, '_blank');
         }
@@ -386,5 +389,6 @@
 </body>
 
 </html>
+
 
 
