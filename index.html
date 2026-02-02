@@ -368,14 +368,14 @@
             const locA = document.getElementById('ori-loc').options[document.getElementById('ori-loc').selectedIndex].text;
             const locB = document.getElementById('des-loc').options[document.getElementById('des-loc').selectedIndex].text;
             
-            const msg = `🚛 *NUEVA SOLICITUD DE ENVÍO*%0A%0A` +
-                        `👤 *CLIENTE:* ${f.name}%0A` +
-                        `📊 *CARGA:* ${f.qty} x ${f.size}%0A` +
-                        `━━━━━━━━━━━━━━━━━━━━%0A` +
-                        `📍 *RETIRO:* ${locA} - ${f.oriAddr}%0A` +
-                        `🏁 *ENTREGA:* ${locB} - ${f.desAddr}%0A` +
-                        `━━━━━━━━━━━━━━━━━━━━%0A` +
-                        `💳 *PAGO:* ${f.payment}%0A` +
+            const msg = `🚛 *NUEVA SOLICITUD DE ENVÍO*` +
+                        `👤 *CLIENTE:* ${f.name}` +
+                        `📊 *CARGA:* ${f.qty} x ${f.size}` +
+                        `━━━━━━━━━━━━━━━━━━━━` +
+                        `📍 *RETIRO:* ${locA} - ${f.oriAddr}` +
+                        `🏁 *ENTREGA:* ${locB} - ${f.desAddr}` +
+                        `━━━━━━━━━━━━━━━━━━━━` +
+                        `💳 *PAGO:* ${f.payment}` +
                         `💰 *TOTAL: ${document.getElementById('final-price').innerText}*` + 
                         taxMsg + 
                         paymentDetails;
@@ -384,4 +384,5 @@
         }
     </script>
 </body>
+
 </html>
