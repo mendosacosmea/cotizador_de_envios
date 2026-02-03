@@ -3,16 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, 
-
-initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SERVICIO INTEGRAL M.S. | Cotizador</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus
-
-+Jakarta+Sans:wght@400;500;600;700;800&display=swap" 
-
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -44,9 +38,7 @@ rel="stylesheet">
             border-color: #2563eb;
             background-color: #eff6ff;
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 
-
-0.1);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
         }
 
         .check-icon {
@@ -79,9 +71,7 @@ rel="stylesheet">
         }
 
         .dot { transition: all 0.3s ease-in-out; }
-        input:checked~.dot { transform: translateX(100%); 
-
-background-color: #2563eb; }
+        input:checked~.dot { transform: translateX(100%); background-color: #2563eb; }
         input:checked~.block-bg { background-color: #dbeafe; }
 
         /* Modales */
@@ -100,9 +90,7 @@ background-color: #2563eb; }
         .expandable {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 
-
-0.2, 1), opacity 0.3s ease;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
             opacity: 0;
         }
 
@@ -148,535 +136,217 @@ background-color: #2563eb; }
 
     <!-- Modal Alerta Simple -->
     <div id="alert-modal" class="modal-overlay">
-        <div class="bg-white rounded-3xl p-8 max-w-sm w-full 
-
-shadow-2xl text-center">
-            <div class="w-16 h-16 bg-red-100 text-red-600 
-
-rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-
-class="h-8 w-8" fill="none" viewBox="0 0 24 24" 
-
-stroke="currentColor">
-                    <path stroke-linecap="round" stroke-
-
-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 
-
-4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694
-
--1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center">
+            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
             </div>
-            <h3 class="text-xl font-black mb-2 uppercase 
-
-italic">Atención</h3>
-            <p id="alert-text" class="text-slate-500 text-sm 
-
-mb-6"></p>
-            <button onclick="closeModal('alert-modal')" 
-
-class="w-full bg-slate-900 text-white py-4 rounded-2xl font-
-
-black uppercase italic shadow-lg">Entendido</button>
+            <h3 class="text-xl font-black mb-2 uppercase italic">Atención</h3>
+            <p id="alert-text" class="text-slate-500 text-sm mb-6"></p>
+            <button onclick="closeModal('alert-modal')" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black uppercase italic shadow-lg">Entendido</button>
         </div>
     </div>
 
     <!-- Modal Resumen de Pedido (Doble Autenticación) -->
     <div id="summary-modal" class="modal-overlay">
-        <div class="bg-white rounded-3xl p-6 max-w-md w-full 
-
-shadow-2xl overflow-y-auto max-h-[90vh]">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl overflow-y-auto max-h-[90vh]">
             <div class="flex items-center gap-3 mb-4">
-                <div class="bg-blue-600 p-2 rounded-lg text-
-
-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-
-class="h-6 w-6" fill="none" viewBox="0 0 24 24" 
-
-stroke="currentColor">
-                        <path stroke-linecap="round" stroke-
-
-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 
-
-2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 
-
-2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-black uppercase 
-
-italic">Verificar Pedido</h3>
+                <h3 class="text-xl font-black uppercase italic">Verificar Pedido</h3>
             </div>
-            <p class="text-slate-500 text-xs mb-6 font-bold 
-
-uppercase tracking-widest">Revisa que los datos sean 
-
-correctos:</p>
+            <p class="text-slate-500 text-xs mb-6 font-bold uppercase tracking-widest">Revisa que los datos sean correctos:</p>
             
-            <div id="summary-content" class="space-y-1 mb-8 
-
-text-sm">
+            <div id="summary-content" class="space-y-1 mb-8 text-sm">
                 <!-- Contenido generado por JS -->
             </div>
 
             <div class="flex gap-3">
-                <button onclick="closeModal('summary-modal')" 
-
-class="flex-1 bg-slate-100 text-slate-600 py-4 rounded-2xl 
-
-font-bold uppercase text-xs">Editar</button>
-                <button onclick="confirmAndFinish()" 
-
-class="flex-[2] bg-blue-600 text-white py-4 rounded-2xl font-
-
-black uppercase italic text-xs shadow-lg shadow-blue-
-
-200">Confirmar Todo ✅</button>
+                <button onclick="closeModal('summary-modal')" class="flex-1 bg-slate-100 text-slate-600 py-4 rounded-2xl font-bold uppercase text-xs">Editar</button>
+                <button onclick="confirmAndFinish()" class="flex-[2] bg-blue-600 text-white py-4 rounded-2xl font-black uppercase italic text-xs shadow-lg shadow-blue-200">Confirmar Todo ✅</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Éxito Final -->
     <div id="success-modal" class="modal-overlay">
-        <div class="bg-white rounded-3xl p-8 max-w-sm w-full 
-
-shadow-2xl text-center">
-            <div class="w-20 h-20 bg-green-100 text-green-600 
-
-rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-
-class="h-10 w-10" fill="none" viewBox="0 0 24 24" 
-
-stroke="currentColor">
-                    <path stroke-linecap="round" stroke-
-
-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                 </svg>
             </div>
-            <h3 class="text-2xl font-black mb-4 uppercase 
-
-italic">¡Recibido!</h3>
-            <p class="text-slate-600 text-sm mb-2 leading-
-
-relaxed">
+            <h3 class="text-2xl font-black mb-4 uppercase italic">¡Recibido!</h3>
+            <p class="text-slate-600 text-sm mb-2 leading-relaxed">
                 Tu pedido ha sido agendado con éxito. 📦
             </p>
-            <div class="bg-orange-50 p-4 rounded-2xl border 
-
-border-orange-100 mb-6">
-                <p class="text-orange-800 text-xs font-bold 
-
-uppercase leading-tight">
-                    Por favor ANTES DE ENTREGARLO VERIFICA QUE 
-
-EL PAQUETE ESTÉ BIEN SELLADO.
+            <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100 mb-6">
+                <p class="text-orange-800 text-xs font-bold uppercase leading-tight">
+                    Por favor ANTES DE ENTREGARLO VERIFICA QUE EL PAQUETE ESTÉ BIEN SELLADO.
                 </p>
             </div>
-            <p class="text-slate-400 text-xs mb-6 
-
-italic">¡Gracias por elegir Servicio Integral M.S.! 🚚</p>
-            <button id="final-btn" class="w-full bg-slate-900 
-
-text-white py-4 rounded-2xl font-black uppercase italic 
-
-shadow-lg">Enviar a WhatsApp</button>
+            <p class="text-slate-400 text-xs mb-6 italic">¡Gracias por elegir Servicio Integral M.S.! 🚚</p>
+            <button id="final-btn" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black uppercase italic shadow-lg">Enviar a WhatsApp</button>
         </div>
     </div>
 
-    <nav class="glass-nav sticky top-0 z-50 border-b border-
-
-slate-100">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-
-
-between items-center">
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex flex-col">
-                <span class="text-xl font-extrabold tracking-
-
-tighter text-slate-900 uppercase italic leading-none">SERVICIO 
-
-INTEGRAL M.S</span>
+                <span class="text-xl font-extrabold tracking-tighter text-slate-900 uppercase italic leading-none">SERVICIO INTEGRAL M.S</span>
                 <div class="flex items-center gap-1 mt-1">
-                    <span class="text-[8px] font-bold text-
-
-blue-600 uppercase tracking-widest">LOGÍSTICA Y 
-
-DISTRIBUCIÓN</span>
-                    <span class="text-[8px] text-slate-300">|
-
-</span>
-                    <span class="text-[8px] font-bold text-
-
-orange-500 uppercase tracking-widest">MERCADO FLEX</span>
+                    <span class="text-[8px] font-bold text-blue-600 uppercase tracking-widest">LOGÍSTICA Y DISTRIBUCIÓN</span>
+                    <span class="text-[8px] text-slate-300">|</span>
+                    <span class="text-[8px] font-bold text-orange-500 uppercase tracking-widest">MERCADO FLEX</span>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-3xl mx-auto px-4 py-8">
-        <div class="card-main p-6 md:p-10 border border-
-
-slate-100">
+        <div class="card-main p-6 md:p-10 border border-slate-100">
             
             <!-- 1. Paquetes -->
             <div class="mb-10">
-                <div class="flex items-center justify-between 
-
-mb-4">
+                <div class="flex items-center justify-between mb-4">
                     <div class="flex flex-col">
-                        <label class="block text-[10px] font-
-
-black text-slate-400 uppercase tracking-[0.2em] italic">1. 
-
-Tamaño de Carga</label>
-                        <span id="promo-notice" class="hidden 
-
-promo-badge mt-1 w-fit">¡Promo 3+ unidades: Sin costo de 
-
-ruta!</span>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] italic">1. Tamaño de Carga</label>
+                        <span id="promo-notice" class="hidden promo-badge mt-1 w-fit">¡Promo 3+ unidades: Sin costo de ruta!</span>
                     </div>
-                    <div class="flex items-center bg-slate-100 
-
-p-1 rounded-xl">
-                         <button onclick="changeQty(-1)" 
-
-class="counter-btn shadow-sm text-slate-400 hover:text-slate-
-
-600">-</button>
-                         <span id="qty-display" class="w-10 
-
-text-center text-lg font-black italic">1</span>
-                         <button onclick="changeQty(1)" 
-
-class="counter-btn shadow-sm text-blue-600 hover:text-blue-
-
-800">+</button>
+                    <div class="flex items-center bg-slate-100 p-1 rounded-xl">
+                         <button onclick="changeQty(-1)" class="counter-btn shadow-sm text-slate-400 hover:text-slate-600">-</button>
+                         <span id="qty-display" class="w-10 text-center text-lg font-black italic">1</span>
+                         <button onclick="changeQty(1)" class="counter-btn shadow-sm text-blue-600 hover:text-blue-800">+</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 
-
-gap-3">
-                    <div onclick="setSize('Pequeño', 1200, 
-
-this)" class="size-card rounded-2xl p-4 border-2">
-                        <svg class="check-icon w-4 h-4" 
-
-fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 
-
-100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 
-
-7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-
-
-4z"></path></svg>
-                        <p class="font-black text-slate-800 
-
-italic text-sm uppercase mb-1">Pequeño</p>
-                        <p class="text-[10px] text-slate-500 
-
-leading-tight mb-2 italic">Sobres, calzado, Flex.</p>
-                        <p class="text-blue-600 font-bold 
-
-text-xs">$1.200 c/u</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div onclick="setSize('Pequeño', 1200, this)" class="size-card rounded-2xl p-4 border-2">
+                        <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
+                        <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Pequeño</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">Sobres, calzado, Flex.</p>
+                        <p class="text-blue-600 font-bold text-xs">$1.200 c/u</p>
                     </div>
-                    <div onclick="setSize('Mediano', 1600, 
-
-this)" class="size-card rounded-2xl p-4 border-2">
-                        <svg class="check-icon w-4 h-4" 
-
-fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 
-
-100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 
-
-7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-
-
-4z"></path></svg>
-                        <p class="font-black text-slate-800 
-
-italic text-sm uppercase mb-1">Mediano</p>
-                        <p class="text-[10px] text-slate-500 
-
-leading-tight mb-2 italic">E-comers, microondas, TV 32".</p>
-                        <p class="text-blue-600 font-bold 
-
-text-xs">$1.600 c/u</p>
+                    <div onclick="setSize('Mediano', 1600, this)" class="size-card rounded-2xl p-4 border-2">
+                        <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
+                        <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Mediano</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">E-comers, microondas, TV 32".</p>
+                        <p class="text-blue-600 font-bold text-xs">$1.600 c/u</p>
                     </div>
-                    <div onclick="setSize('Grande', 2000, 
-
-this)" class="size-card rounded-2xl p-4 border-2">
-                        <svg class="check-icon w-4 h-4" 
-
-fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 
-
-100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 
-
-7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-
-
-4z"></path></svg>
-                        <p class="font-black text-slate-800 
-
-italic text-sm uppercase mb-1">Grande</p>
-                        <p class="text-[10px] text-slate-500 
-
-leading-tight mb-2 italic">Heladera chica, cubiertas.</p>
-                        <p class="text-blue-600 font-bold 
-
-text-xs">$2.000 c/u</p>
+                    <div onclick="setSize('Grande', 2000, this)" class="size-card rounded-2xl p-4 border-2">
+                        <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
+                        <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Grande</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">Heladera chica, cubiertas.</p>
+                        <p class="text-blue-600 font-bold text-xs">$2.000 c/u</p>
                     </div>
                 </div>
             </div>
 
             <!-- 2. Ruta -->
             <div class="mb-10">
-                <label class="block text-[10px] font-black 
-
-text-slate-400 uppercase tracking-[0.2em] mb-4 italic">2. Ruta 
-
-del Viaje</label>
+                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 italic">2. Ruta del Viaje</label>
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="space-y-3">
-                        <select id="ori-loc" 
-
-onchange="updatePrice()" class="input-styled text-sm">
-                            <option value="" disabled 
-
-selected>Retiro en...</option>
+                        <select id="ori-loc" onchange="updatePrice()" class="input-styled text-sm">
+                            <option value="" disabled selected>Retiro en...</option>
                             <option value="0">Rosario</option>
-                            <option value="1">G. 
-
-Baigorria</option>
-                            <option value="2">C. 
-
-Bermúdez</option>
-                            <option value="3">F. L. 
-
-Beltrán</option>
-                            <option value="4">San 
-
-Lorenzo</option>
-                            <option 
-
-value="5">Ricardone</option>
-                            <option value="6">Puerto Gral. San 
-
-Martín</option>
+                            <option value="1">G. Baigorria</option>
+                            <option value="2">C. Bermúdez</option>
+                            <option value="3">F. L. Beltrán</option>
+                            <option value="4">San Lorenzo</option>
+                            <option value="5">Ricardone</option>
+                            <option value="6">Puerto Gral. San Martín</option>
                             <option value="7">Aldao</option>
                             <option value="8">Timbúes</option>
                             <option value="9">Andino</option>
-                            <option 
-
-value="10">Serodino</option>
+                            <option value="10">Serodino</option>
                         </select>
-                        <input type="text" id="ori-address" 
-
-placeholder="Calle y Altura de Retiro" class="input-styled 
-
-text-sm">
+                        <input type="text" id="ori-address" placeholder="Calle y Altura de Retiro" class="input-styled text-sm">
                     </div>
                     <div class="space-y-3">
-                        <select id="des-loc" 
-
-onchange="updatePrice()" class="input-styled text-sm">
-                            <option value="" disabled 
-
-selected>Entrega en...</option>
+                        <select id="des-loc" onchange="updatePrice()" class="input-styled text-sm">
+                            <option value="" disabled selected>Entrega en...</option>
                             <option value="0">Rosario</option>
-                            <option value="1">G. 
-
-Baigorria</option>
-                            <option value="2">C. 
-
-Bermúdez</option>
-                            <option value="3">F. L. 
-
-Beltrán</option>
-                            <option value="4">San 
-
-Lorenzo</option>
-                            <option 
-
-value="5">Ricardone</option>
-                            <option value="6">Puerto Gral. San 
-
-Martín</option>
+                            <option value="1">G. Baigorria</option>
+                            <option value="2">C. Bermúdez</option>
+                            <option value="3">F. L. Beltrán</option>
+                            <option value="4">San Lorenzo</option>
+                            <option value="5">Ricardone</option>
+                            <option value="6">Puerto Gral. San Martín</option>
                             <option value="7">Aldao</option>
                             <option value="8">Timbúes</option>
                             <option value="9">Andino</option>
-                            <option 
-
-value="10">Serodino</option>
+                            <option value="10">Serodino</option>
                         </select>
-                        <input type="text" id="des-address" 
-
-placeholder="Calle y Altura de Entrega" class="input-styled 
-
-text-sm">
+                        <input type="text" id="des-address" placeholder="Calle y Altura de Entrega" class="input-styled text-sm">
                     </div>
                 </div>
             </div>
 
             <!-- 3. Facturación -->
             <div class="mb-10">
-                <div class="bg-blue-50 p-6 rounded-3xl border 
-
-border-blue-100">
-                    <div class="flex items-center justify-
-
-between mb-2">
-                        <span class="text-[10px] font-black 
-
-text-blue-900 uppercase italic">¿Desea Factura A, B o C?
-
-</span>
-                        <label class="flex items-center 
-
-cursor-pointer">
+                <div class="bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-black text-blue-900 uppercase italic">¿Desea Factura A, B o C?</span>
+                        <label class="flex items-center cursor-pointer">
                             <div class="relative">
-                                <input id="invoice-toggle" 
-
-type="checkbox" onchange="toggleTaxForm()" class="sr-only">
-                                <div class="block-bg block 
-
-bg-slate-200 w-10 h-5 rounded-full transition-colors"></div>
-                                <div class="dot absolute 
-
-left-1 top-0.5 bg-white w-4 h-4 rounded-full shadow 
-
-transition-transform"></div>
+                                <input id="invoice-toggle" type="checkbox" onchange="toggleTaxForm()" class="sr-only">
+                                <div class="block-bg block bg-slate-200 w-10 h-5 rounded-full transition-colors"></div>
+                                <div class="dot absolute left-1 top-0.5 bg-white w-4 h-4 rounded-full shadow transition-transform"></div>
                             </div>
                         </label>
                     </div>
-                    <div id="tax-form" class="expandable 
-
-space-y-3">
-                        <div class="grid grid-cols-1 md:grid-
-
-cols-2 gap-3">
-                            <select id="tax-type" class="w-
-
-full p-3 bg-white border border-slate-200 rounded-xl text-xs 
-
-font-bold outline-none">
-                                <option value="Factura 
-
-B">Factura B</option>
-                                <option value="Factura 
-
-A">Factura A</option>
-                                <option value="Factura 
-
-C">Factura C</option>
+                    <div id="tax-form" class="expandable space-y-3">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <select id="tax-type" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
+                                <option value="Factura B">Factura B</option>
+                                <option value="Factura A">Factura A</option>
+                                <option value="Factura C">Factura C</option>
                             </select>
-                            <input type="number" id="tax-id" 
-
-placeholder="CUIT / CUIL" class="w-full p-3 bg-white border 
-
-border-slate-200 rounded-xl text-xs font-bold outline-none">
+                            <input type="number" id="tax-id" placeholder="CUIT / CUIL" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
                         </div>
-                        <input type="text" id="tax-name" 
-
-placeholder="Razón Social" class="w-full p-3 bg-white border 
-
-border-slate-200 rounded-xl text-xs font-bold outline-none">
-                        <input type="text" id="tax-address" 
-
-placeholder="Domicilio Fiscal" class="w-full p-3 bg-white 
-
-border border-slate-200 rounded-xl text-xs font-bold outline-
-
-none">
-                        <input type="email" id="tax-email" 
-
-placeholder="Email para factura" class="w-full p-3 bg-white 
-
-border border-slate-200 rounded-xl text-xs font-bold outline-
-
-none">
+                        <input type="text" id="tax-name" placeholder="Razón Social" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
+                        <input type="text" id="tax-address" placeholder="Domicilio Fiscal" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
+                        <input type="email" id="tax-email" placeholder="Email para factura" class="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold outline-none">
                     </div>
                 </div>
             </div>
 
             <!-- 4. Contacto -->
             <div class="mb-10 space-y-3">
-                <div class="grid grid-cols-1 md:grid-cols-2 
-
-gap-3">
-                    <input type="text" id="cust-name" 
-
-placeholder="Tu Nombre / Empresa" class="input-styled text-
-
-sm">
-                    <input type="tel" id="cust-phone" 
-
-placeholder="WhatsApp (Ej: 341...)" class="input-styled text-
-
-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <input type="text" id="cust-name" placeholder="Tu Nombre / Empresa" class="input-styled text-sm">
+                    <input type="tel" id="cust-phone" placeholder="WhatsApp (Ej: 341...)" class="input-styled text-sm">
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 
-
-gap-3">
-                    <select id="payment-method" 
-
-onchange="toggleTransferData()" class="input-styled text-sm">
-                        <option value="" disabled 
-
-selected>Medio de Pago...</option>
-                        <option value="Efectivo en 
-
-Origen">Efectivo en Origen</option>
-                        <option value="Efectivo en 
-
-Destino">Efectivo en Destino</option>
-                        <option value="Billetera Virtual / 
-
-Transferencia">Billetera Virtual / Transferencia</option>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <select id="payment-method" onchange="toggleTransferData()" class="input-styled text-sm">
+                        <option value="" disabled selected>Medio de Pago...</option>
+                        <option value="Efectivo en Origen">Efectivo en Origen</option>
+                        <option value="Efectivo en Destino">Efectivo en Destino</option>
+                        <option value="Billetera Virtual / Transferencia">Billetera Virtual / Transferencia</option>
                     </select>
-                    <input type="text" id="pkg-desc" 
-
-placeholder="¿Qué llevamos?" class="input-styled text-sm">
+                    <input type="text" id="pkg-desc" placeholder="¿Qué llevamos?" class="input-styled text-sm">
                 </div>
                 
-                <div id="transfer-data" class="expandable bg-
-
-orange-50 p-4 rounded-2xl border border-orange-100 text-
-
-[11px]">
-                    <p class="font-bold text-orange-800 
-
-uppercase mb-2">Datos para Transferencia:</p>
-                    <p><strong>Nombre y Apellido:</strong> 
-
-Mendosa Cosmea Milton Hernan</p>
+                <div id="transfer-data" class="expandable bg-orange-50 p-4 rounded-2xl border border-orange-100 text-[11px]">
+                    <p class="font-bold text-orange-800 uppercase mb-2">Datos para Transferencia:</p>
+                    <p><strong>Nombre y Apellido:</strong> Mendosa Cosmea Milton Hernan</p>
                     <p><strong>DNI:</strong> 34.701.759</p>
-                    <p><strong>Alias:</strong> 
-
-servicioms.mp</p>
+                    <p><strong>Alias:</strong> servicioms.mp</p>
                 </div>
             </div>
 
             <!-- Total -->
-            <div class="pt-8 border-t border-slate-100 flex 
-
-flex-col md:flex-row items-center justify-between gap-6">
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
-                    <p class="text-[9px] font-black text-
-
-slate-400 uppercase tracking-widest mb-1">Presupuesto 
-
-Estimado</p>
-                    <h2 id="final-price" class="text-5xl 
-
-font-black text-slate-900 italic tracking-tighter">$0</h2>
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Presupuesto Estimado</p>
+                    <h2 id="final-price" class="text-5xl font-black text-slate-900 italic tracking-tighter">$0</h2>
                 </div>
-                <button onclick="requestOrder()" class="w-full 
-
-md:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-
-
-black uppercase italic tracking-widest shadow-xl shadow-blue-
-
-200 active:scale-95 transition-all">
+                <button onclick="requestOrder()" class="w-full md:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest shadow-xl shadow-blue-200 active:scale-95 transition-all">
                     Confirmar Pedido 🚛
                 </button>
             </div>
@@ -691,17 +361,9 @@ black uppercase italic tracking-widest shadow-xl shadow-blue-
 
         function getOrderCode() {
             const now = new Date();
-            const dateKey = `${String(now.getDate()).padStart
-
-(2, '0')}${String(now.getMonth() + 1).padStart(2, 
-
-'0')}${String(now.getFullYear()).slice(-2)}`;
-            let lastDate = localStorage.getItem
-
-('ms_last_date');
-            let counter = parseInt(localStorage.getItem
-
-('ms_daily_counter')) || 0;
+            const dateKey = `${String(now.getDate()).padStart(2, '0')}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getFullYear()).slice(-2)}`;
+            let lastDate = localStorage.getItem('ms_last_date');
+            let counter = parseInt(localStorage.getItem('ms_daily_counter')) || 0;
 
             if (lastDate !== dateKey) {
                 counter = 0;
@@ -709,260 +371,122 @@ black uppercase italic tracking-widest shadow-xl shadow-blue-
             }
             counter++;
             localStorage.setItem('ms_daily_counter', counter);
-            return `${dateKey}-${String(counter).padStart(2, 
-
-'0')}`;
+            return `${dateKey}-${String(counter).padStart(2, '0')}`;
         }
 
         function changeQty(val) {
             quantity = Math.max(1, quantity + val);
-            document.getElementById('qty-display').innerText = 
-
-quantity;
-            document.getElementById('promo-
-
-notice').classList.toggle('hidden', quantity < 3);
+            document.getElementById('qty-display').innerText = quantity;
+            document.getElementById('promo-notice').classList.toggle('hidden', quantity < 3);
             updatePrice();
         }
 
         function toggleTaxForm() {
-            document.getElementById('tax-
-
-form').classList.toggle('open', document.getElementById
-
-('invoice-toggle').checked);
+            document.getElementById('tax-form').classList.toggle('open', document.getElementById('invoice-toggle').checked);
         }
 
         function toggleTransferData() {
-            const val = document.getElementById('payment-
-
-method').value;
-            document.getElementById('transfer-
-
-data').classList.toggle('open', val === "Billetera Virtual / 
-
-Transferencia");
+            const val = document.getElementById('payment-method').value;
+            document.getElementById('transfer-data').classList.toggle('open', val === "Billetera Virtual / Transferencia");
         }
 
         function setSize(label, base, el) {
             currentSize = { label, base };
-            document.querySelectorAll('.size-card').forEach(c 
-
-=> c.classList.remove('active'));
+            document.querySelectorAll('.size-card').forEach(c => c.classList.remove('active'));
             el.classList.add('active');
             updatePrice();
         }
 
         function updatePrice() {
-            const sIdx = document.getElementById('ori-
-
-loc').value;
-            const eIdx = document.getElementById('des-
-
-loc').value;
-            if (!currentSize.label || sIdx === "" || eIdx === 
-
-"") return;
+            const sIdx = document.getElementById('ori-loc').value;
+            const eIdx = document.getElementById('des-loc').value;
+            if (!currentSize.label || sIdx === "" || eIdx === "") return;
             
-            const jumpCount = Math.abs(parseInt(sIdx) - 
-
-parseInt(eIdx));
-            let total = (quantity >= 3) ? (currentSize.base * 
-
-quantity) : (currentSize.base * quantity) + (jumpCount * 
-
-VALOR_SALTO);
-            document.getElementById('final-price').innerText = 
-
-`$${Math.round(total).toLocaleString('es-AR')}`;
+            const jumpCount = Math.abs(parseInt(sIdx) - parseInt(eIdx));
+            let total = (quantity >= 3) ? (currentSize.base * quantity) : (currentSize.base * quantity) + (jumpCount * VALOR_SALTO);
+            document.getElementById('final-price').innerText = `$${Math.round(total).toLocaleString('es-AR')}`;
         }
 
         function showAlert(text) {
-            document.getElementById('alert-text').innerText = 
-
-text;
-            document.getElementById('alert-
-
-modal').style.display = 'flex';
+            document.getElementById('alert-text').innerText = text;
+            document.getElementById('alert-modal').style.display = 'flex';
         }
 
-        function closeModal(id) { document.getElementById
-
-(id).style.display = 'none'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         function requestOrder() {
             const f = {
                 size: currentSize.label, 
                 qty: quantity,
-                oriLoc: document.getElementById('ori-
-
-loc').value,
-                desLoc: document.getElementById('des-
-
-loc').value,
-                oriAddr: document.getElementById('ori-
-
-address').value.trim(),
-                desAddr: document.getElementById('des-
-
-address').value.trim(),
-                name: document.getElementById('cust-
-
-name').value.trim(),
-                phone: document.getElementById('cust-
-
-phone').value.trim(),
-                payment: document.getElementById('payment-
-
-method').value
+                oriLoc: document.getElementById('ori-loc').value,
+                desLoc: document.getElementById('des-loc').value,
+                oriAddr: document.getElementById('ori-address').value.trim(),
+                desAddr: document.getElementById('des-address').value.trim(),
+                name: document.getElementById('cust-name').value.trim(),
+                phone: document.getElementById('cust-phone').value.trim(),
+                payment: document.getElementById('payment-method').value
             };
 
-            if (!f.size || f.oriLoc === "" || f.desLoc === "" 
-
-|| !f.oriAddr || !f.desAddr || !f.name || !f.phone || !
-
-f.payment) {
-                showAlert("Por favor, completa todos los 
-
-campos requeridos.");
+            if (!f.size || f.oriLoc === "" || f.desLoc === "" || !f.oriAddr || !f.desAddr || !f.name || !f.phone || !f.payment) {
+                showAlert("Por favor, completa todos los campos requeridos.");
                 return;
             }
 
-            const locA = document.getElementById('ori-
-
-loc').options[document.getElementById('ori-
-
-loc').selectedIndex].text;
-            const locB = document.getElementById('des-
-
-loc').options[document.getElementById('des-
-
-loc').selectedIndex].text;
+            const locA = document.getElementById('ori-loc').options[document.getElementById('ori-loc').selectedIndex].text;
+            const locB = document.getElementById('des-loc').options[document.getElementById('des-loc').selectedIndex].text;
             const orderCode = getOrderCode();
-            const total = document.getElementById('final-
+            const total = document.getElementById('final-price').innerText;
 
-price').innerText;
-
-            // Generar Resumen Visual para el Modal de Doble 
-
-Confirmación
+            // Generar Resumen Visual para el Modal de Doble Confirmación
             const summaryHtml = `
-                <div class="summary-item"><span class="text-
-
-slate-400 font-bold uppercase text-[10px]">Pedido N°:</span> 
-
-<span class="font-black italic text-blue-600">${orderCode}
-
-</span></div>
-                <div class="summary-item"><span class="text-
-
-slate-400 font-bold uppercase text-[10px]">Carga:</span> <span 
-
-class="font-bold">${f.size} (${f.qty} un.)</span></div>
-                <div class="summary-item"><span class="text-
-
-slate-400 font-bold uppercase text-[10px]">Origen:</span> 
-
-<span class="font-bold">${locA}</span></div>
-                <div class="summary-item"><span class="text-
-
-slate-400 font-bold uppercase text-[10px]">Destino:</span> 
-
-<span class="font-bold">${locB}</span></div>
-                <div class="summary-item"><span class="text-
-
-slate-400 font-bold uppercase text-[10px]">Pago:</span> <span 
-
-class="font-bold text-orange-600">${f.payment}</span></div>
-                <div class="summary-item !border-none pt-
-
-4"><span class="text-slate-900 font-black uppercase text-
-
-xs">Total:</span> <span class="text-xl font-black text-slate-
-
-900">${total}</span></div>
+                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Pedido N°:</span> <span class="font-black italic text-blue-600">${orderCode}</span></div>
+                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Carga:</span> <span class="font-bold">${f.size} (${f.qty} un.)</span></div>
+                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Origen:</span> <span class="font-bold">${locA}</span></div>
+                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Destino:</span> <span class="font-bold">${locB}</span></div>
+                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Pago:</span> <span class="font-bold text-orange-600">${f.payment}</span></div>
+                <div class="summary-item !border-none pt-4"><span class="text-slate-900 font-black uppercase text-xs">Total:</span> <span class="text-xl font-black text-slate-900">${total}</span></div>
             `;
             
-            document.getElementById('summary-
-
-content').innerHTML = summaryHtml;
+            document.getElementById('summary-content').innerHTML = summaryHtml;
 
             // Preparar mensaje para WhatsApp
-            const origenQuery = encodeURIComponent(`
-
-${f.oriAddr}, ${locA}, Santa Fe, Argentina`);
-            const destinoQuery = encodeURIComponent(`
-
-${f.desAddr}, ${locB}, Santa Fe, Argentina`);
-            const mapRoute = 
-
-`https://www.google.com/maps/dir/?api=1&origin=${origenQuery}
-
-&destination=${destinoQuery}&travelmode=driving`;
+            const origenQuery = encodeURIComponent(`${f.oriAddr}, ${locA}, Santa Fe, Argentina`);
+            const destinoQuery = encodeURIComponent(`${f.desAddr}, ${locB}, Santa Fe, Argentina`);
+            const mapRoute = `https://www.google.com/maps/dir/?api=1&origin=${origenQuery}&destination=${destinoQuery}&travelmode=driving`;
 
             let invoiceText = "No";
-            if (document.getElementById('invoice-
-
-toggle').checked) {
-                invoiceText = `Sí (${document.getElementById
-
-('tax-type').value})\n` +
+            if (document.getElementById('invoice-toggle').checked) {
+                invoiceText = `Sí (${document.getElementById('tax-type').value})\n` +
                               `*DATOS FISCALES:*\n` +
-                              `- *CUIT:* 
-
-${document.getElementById('tax-id').value}\n` +
-                              `- *Razón:* 
-
-${document.getElementById('tax-name').value}\n` +
-                              `- *Domicilio:* 
-
-${document.getElementById('tax-address').value}\n` +
-                              `- *Email:* 
-
-${document.getElementById('tax-email').value}`;
+                              `- *CUIT:* ${document.getElementById('tax-id').value}\n` +
+                              `- *Razón:* ${document.getElementById('tax-name').value}\n` +
+                              `- *Domicilio:* ${document.getElementById('tax-address').value}\n` +
+                              `- *Email:* ${document.getElementById('tax-email').value}`;
             }
 
             lastMessage = `🚀 *NUEVA SOLICITUD DE ENVÍO*\n\n` +
                         `*PEDIDO N°:* ${orderCode}\n` +
-                        `*TIPO:* ${f.size} (${f.qty} 
-
-unidad/es)\n` +
+                        `*TIPO:* ${f.size} (${f.qty} unidad/es)\n` +
                         `📄 *FACTURA:* ${invoiceText}\n` +
                         `👤 *CLIENTE:* ${f.name}\n` +
                         `📞 *TEL:* ${f.phone}\n` +
-                        `📦 *CONTENIDO:* 
-
-${document.getElementById('pkg-desc').value.trim() || "Sin 
-
-descripción"}\n` +
-                        `📍 *RETIRO:* ${f.oriAddr}, ${locA}\n` 
-
-+
-                        `🏁 *ENTREGA:* ${f.desAddr}, ${locB}\n` 
-
-+
+                        `📦 *CONTENIDO:* ${document.getElementById('pkg-desc').value.trim() || "Sin descripción"}\n` +
+                        `📍 *RETIRO:* ${f.oriAddr}, ${locA}\n` +
+                        `🏁 *ENTREGA:* ${f.desAddr}, ${locB}\n` +
                         `💰 *PAGO:* ${f.payment}\n\n` +
                         `💵 *TOTAL ESTIMADO:* ${total}\n\n` +
                         `🛣️ *RUTA EN MAPS:* ${mapRoute}`;
 
-            document.getElementById('summary-
-
-modal').style.display = 'flex';
+            document.getElementById('summary-modal').style.display = 'flex';
         }
 
         function confirmAndFinish() {
             closeModal('summary-modal');
-            document.getElementById('success-
-
-modal').style.display = 'flex';
+            document.getElementById('success-modal').style.display = 'flex';
             
             // Asignar el envío al botón final
-            document.getElementById('final-btn').onclick = 
-
-function() {
-                window.open(`https://wa.me/5493413753881?
-
-text=${encodeURIComponent(lastMessage)}`, '_blank');
+            document.getElementById('final-btn').onclick = function() {
+                window.open(`https://wa.me/5493413753881?text=${encodeURIComponent(lastMessage)}`, '_blank');
                 closeModal('success-modal');
             };
         }
