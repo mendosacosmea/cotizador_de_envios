@@ -74,7 +74,6 @@
         input:checked~.dot { transform: translateX(100%); background-color: #2563eb; }
         input:checked~.block-bg { background-color: #dbeafe; }
 
-        /* Modales */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -134,7 +133,7 @@
 
 <body class="text-slate-900 pb-12">
 
-    <!-- Modal Alerta Simple -->
+    <!-- Modal Alerta -->
     <div id="alert-modal" class="modal-overlay">
         <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center">
             <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -148,7 +147,7 @@
         </div>
     </div>
 
-    <!-- Modal Resumen de Pedido (Doble Autenticación) -->
+    <!-- Modal Resumen -->
     <div id="summary-modal" class="modal-overlay">
         <div class="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl overflow-y-auto max-h-[90vh]">
             <div class="flex items-center gap-3 mb-4">
@@ -159,20 +158,16 @@
                 </div>
                 <h3 class="text-xl font-black uppercase italic">Verificar Pedido</h3>
             </div>
-            <p class="text-slate-500 text-xs mb-6 font-bold uppercase tracking-widest">Revisa que los datos sean correctos:</p>
-            
-            <div id="summary-content" class="space-y-1 mb-8 text-sm">
-                <!-- Contenido generado por JS -->
-            </div>
-
+            <p class="text-slate-500 text-xs mb-6 font-bold uppercase tracking-widest">Confirme los datos:</p>
+            <div id="summary-content" class="space-y-1 mb-8 text-sm"></div>
             <div class="flex gap-3">
                 <button onclick="closeModal('summary-modal')" class="flex-1 bg-slate-100 text-slate-600 py-4 rounded-2xl font-bold uppercase text-xs">Editar</button>
-                <button onclick="confirmAndFinish()" class="flex-[2] bg-blue-600 text-white py-4 rounded-2xl font-black uppercase italic text-xs shadow-lg shadow-blue-200">Confirmar Todo ✅</button>
+                <button onclick="confirmAndFinish()" class="flex-[2] bg-blue-600 text-white py-4 rounded-2xl font-black uppercase italic text-xs shadow-lg shadow-blue-200">Confirmar ✅</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Éxito Final -->
+    <!-- Modal Éxito -->
     <div id="success-modal" class="modal-overlay">
         <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl text-center">
             <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -181,15 +176,10 @@
                 </svg>
             </div>
             <h3 class="text-2xl font-black mb-4 uppercase italic">¡Recibido!</h3>
-            <p class="text-slate-600 text-sm mb-2 leading-relaxed">
-                Tu pedido ha sido agendado con éxito. 📦
-            </p>
+            <p class="text-slate-600 text-sm mb-2 leading-relaxed">Pedido agendado con éxito. 📦</p>
             <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100 mb-6">
-                <p class="text-orange-800 text-xs font-bold uppercase leading-tight">
-                    Por favor ANTES DE ENTREGARLO VERIFICA QUE EL PAQUETE ESTÉ BIEN SELLADO.
-                </p>
+                <p class="text-orange-800 text-xs font-bold uppercase leading-tight">Por favor, verifique que el paquete esté bien sellado antes de la entrega.</p>
             </div>
-            <p class="text-slate-400 text-xs mb-6 italic">¡Gracias por elegir Servicio Integral M.S.! 🚚</p>
             <button id="final-btn" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black uppercase italic shadow-lg">Enviar a WhatsApp</button>
         </div>
     </div>
@@ -199,7 +189,7 @@
             <div class="flex flex-col">
                 <span class="text-xl font-extrabold tracking-tighter text-slate-900 uppercase italic leading-none">SERVICIO INTEGRAL M.S</span>
                 <div class="flex items-center gap-1 mt-1">
-                    <span class="text-[8px] font-bold text-blue-600 uppercase tracking-widest">LOGÍSTICA, ALMACENAMIENTO Y DISTRIBUCIÓN</span>
+                    <span class="text-[8px] font-bold text-blue-600 uppercase tracking-widest">LOGÍSTICA Y DISTRIBUCIÓN</span>
                     <span class="text-[8px] text-slate-300">|</span>
                     <span class="text-[8px] font-bold text-orange-500 uppercase tracking-widest">MERCADO FLEX</span>
                 </div>
@@ -215,7 +205,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex flex-col">
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] italic">1. Tamaño de Carga</label>
-                        <span id="promo-notice" class="hidden promo-badge mt-1 w-fit">¡Promo 3+ unidades: Sin costo de ruta!</span>
+                        <span id="promo-notice" class="hidden promo-badge mt-1 w-fit">¡Ruta Bonificada!</span>
                     </div>
                     <div class="flex items-center bg-slate-100 p-1 rounded-xl">
                          <button onclick="changeQty(-1)" class="counter-btn shadow-sm text-slate-400 hover:text-slate-600">-</button>
@@ -225,34 +215,34 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div onclick="setSize('Pequeño', 1200, this)" class="size-card rounded-2xl p-4 border-2">
+                    <div onclick="setSize('Pequeño', 1500, this)" class="size-card rounded-2xl p-4 border-2">
                         <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                         <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Pequeño</p>
                         <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">Sobres, calzado, Flex.</p>
-                        <p class="text-blue-600 font-bold text-xs">$1.200 c/u</p>
+                        <p class="text-blue-600 font-bold text-xs">$1.500 c/u</p>
                     </div>
-                    <div onclick="setSize('Mediano', 1600, this)" class="size-card rounded-2xl p-4 border-2">
+                    <div onclick="setSize('Mediano', 2000, this)" class="size-card rounded-2xl p-4 border-2">
                         <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                         <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Mediano</p>
-                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">E-comers, microondas, TV 32".</p>
-                        <p class="text-blue-600 font-bold text-xs">$1.600 c/u</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">E-commerce, microondas, TV 32".</p>
+                        <p class="text-blue-600 font-bold text-xs">$2.000 c/u</p>
                     </div>
-                    <div onclick="setSize('Grande', 2000, this)" class="size-card rounded-2xl p-4 border-2">
+                    <div onclick="setSize('Grande', 2500, this)" class="size-card rounded-2xl p-4 border-2">
                         <svg class="check-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
                         <p class="font-black text-slate-800 italic text-sm uppercase mb-1">Grande</p>
-                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">Heladera chica, cubiertas.</p>
-                        <p class="text-blue-600 font-bold text-xs">$2.000 c/u</p>
+                        <p class="text-[10px] text-slate-500 leading-tight mb-2 italic">Heladera pequeña, neumáticos.</p>
+                        <p class="text-blue-600 font-bold text-xs">$2.500 c/u</p>
                     </div>
                 </div>
             </div>
 
             <!-- 2. Ruta -->
             <div class="mb-10">
-                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 italic">2. Ruta del Viaje</label>
+                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 italic">2. Ruta de Viaje</label>
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="space-y-3">
                         <select id="ori-loc" onchange="updatePrice()" class="input-styled text-sm">
-                            <option value="" disabled selected>Retiro en...</option>
+                            <option value="" disabled selected>Recoge en...</option>
                             <option value="0">Rosario</option>
                             <option value="1">G. Baigorria</option>
                             <option value="2">C. Bermúdez</option>
@@ -265,7 +255,7 @@
                             <option value="9">Andino</option>
                             <option value="10">Serodino</option>
                         </select>
-                        <input type="text" id="ori-address" placeholder="Calle y Altura de Retiro" class="input-styled text-sm">
+                        <input type="text" id="ori-address" placeholder="Calle y Número de Recogida" class="input-styled text-sm">
                     </div>
                     <div class="space-y-3">
                         <select id="des-loc" onchange="updatePrice()" class="input-styled text-sm">
@@ -282,7 +272,7 @@
                             <option value="9">Andino</option>
                             <option value="10">Serodino</option>
                         </select>
-                        <input type="text" id="des-address" placeholder="Calle y Altura de Entrega" class="input-styled text-sm">
+                        <input type="text" id="des-address" placeholder="Calle y Número de Entrega" class="input-styled text-sm">
                     </div>
                 </div>
             </div>
@@ -319,7 +309,7 @@
             <!-- 4. Contacto -->
             <div class="mb-10 space-y-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <input type="text" id="cust-name" placeholder="Tu Nombre / Empresa" class="input-styled text-sm">
+                    <input type="text" id="cust-name" placeholder="Su Nombre / Empresa" class="input-styled text-sm">
                     <input type="tel" id="cust-phone" placeholder="WhatsApp (Ej: 341...)" class="input-styled text-sm">
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -327,15 +317,13 @@
                         <option value="" disabled selected>Medio de Pago...</option>
                         <option value="Efectivo en Origen">Efectivo en Origen</option>
                         <option value="Efectivo en Destino">Efectivo en Destino</option>
-                        <option value="Billetera Virtual / Transferencia">Billetera Virtual / Transferencia</option>
+                        <option value="Transferencia">Transferencia</option>
                     </select>
-                    <input type="text" id="pkg-desc" placeholder="¿Qué llevamos?" class="input-styled text-sm">
+                    <input type="text" id="pkg-desc" placeholder="¿Qué transportamos?" class="input-styled text-sm">
                 </div>
-                
                 <div id="transfer-data" class="expandable bg-orange-50 p-4 rounded-2xl border border-orange-100 text-[11px]">
                     <p class="font-bold text-orange-800 uppercase mb-2">Datos para Transferencia:</p>
-                    <p><strong>Nombre y Apellido:</strong> Mendosa Cosmea Milton Hernan</p>
-                    <p><strong>DNI:</strong> 34.701.759</p>
+                    <p><strong>Nombre:</strong> Mendosa Cosmea Milton Hernan</p>
                     <p><strong>Alias:</strong> servicioms.mp</p>
                 </div>
             </div>
@@ -343,7 +331,7 @@
             <!-- Total -->
             <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
-                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Presupuesto Estimado</p>
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Precio Estimado</p>
                     <h2 id="final-price" class="text-5xl font-black text-slate-900 italic tracking-tighter">$0</h2>
                 </div>
                 <button onclick="requestOrder()" class="w-full md:w-auto bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase italic tracking-widest shadow-xl shadow-blue-200 active:scale-95 transition-all">
@@ -357,27 +345,21 @@
         let currentSize = { label: '', base: 0 };
         let quantity = 1;
         let lastMessage = ""; 
-        const VALOR_SALTO = 400;
 
         function getOrderCode() {
             const now = new Date();
             const dateKey = `${String(now.getDate()).padStart(2, '0')}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getFullYear()).slice(-2)}`;
-            let lastDate = localStorage.getItem('ms_last_date');
-            let counter = parseInt(localStorage.getItem('ms_daily_counter')) || 0;
-
-            if (lastDate !== dateKey) {
-                counter = 0;
-                localStorage.setItem('ms_last_date', dateKey);
-            }
+            let lastDate = localStorage.getItem('ms_last_date_es');
+            let counter = parseInt(localStorage.getItem('ms_daily_counter_es')) || 0;
+            if (lastDate !== dateKey) { counter = 0; localStorage.setItem('ms_last_date_es', dateKey); }
             counter++;
-            localStorage.setItem('ms_daily_counter', counter);
+            localStorage.setItem('ms_daily_counter_es', counter);
             return `${dateKey}-${String(counter).padStart(2, '0')}`;
         }
 
         function changeQty(val) {
             quantity = Math.max(1, quantity + val);
             document.getElementById('qty-display').innerText = quantity;
-            document.getElementById('promo-notice').classList.toggle('hidden', quantity < 3);
             updatePrice();
         }
 
@@ -387,7 +369,7 @@
 
         function toggleTransferData() {
             const val = document.getElementById('payment-method').value;
-            document.getElementById('transfer-data').classList.toggle('open', val === "Billetera Virtual / Transferencia");
+            document.getElementById('transfer-data').classList.toggle('open', val === "Transferencia");
         }
 
         function setSize(label, base, el) {
@@ -397,13 +379,37 @@
             updatePrice();
         }
 
+        function calculateJumpCost(jumps) {
+            if (jumps <= 0) return 0;
+            let cost = 0;
+            for (let i = 1; i <= jumps; i++) {
+                if (i === 1) cost += 700;
+                else if (i <= 3) cost += 500;
+                else if (i <= 5) cost += 300;
+                else if (i <= 8) cost += 200;
+                else cost += 200; 
+            }
+            return cost;
+        }
+
         function updatePrice() {
             const sIdx = document.getElementById('ori-loc').value;
             const eIdx = document.getElementById('des-loc').value;
+            
+            let hasPromo = false;
+            if (currentSize.label === 'Pequeño' && quantity >= 4) hasPromo = true;
+            if (currentSize.label === 'Mediano' && quantity >= 3) hasPromo = true;
+            if (currentSize.label === 'Grande' && quantity >= 2) hasPromo = true;
+
+            document.getElementById('promo-notice').classList.toggle('hidden', !hasPromo);
+
             if (!currentSize.label || sIdx === "" || eIdx === "") return;
             
             const jumpCount = Math.abs(parseInt(sIdx) - parseInt(eIdx));
-            let total = (quantity >= 3) ? (currentSize.base * quantity) : (currentSize.base * quantity) + (jumpCount * VALOR_SALTO);
+            const jumpCostTotal = hasPromo ? 0 : calculateJumpCost(jumpCount);
+            
+            const total = (currentSize.base * quantity) + jumpCostTotal;
+
             document.getElementById('final-price').innerText = `$${Math.round(total).toLocaleString('es-AR')}`;
         }
 
@@ -416,8 +422,7 @@
 
         function requestOrder() {
             const f = {
-                size: currentSize.label, 
-                qty: quantity,
+                size: currentSize.label, qty: quantity,
                 oriLoc: document.getElementById('ori-loc').value,
                 desLoc: document.getElementById('des-loc').value,
                 oriAddr: document.getElementById('ori-address').value.trim(),
@@ -428,7 +433,7 @@
             };
 
             if (!f.size || f.oriLoc === "" || f.desLoc === "" || !f.oriAddr || !f.desAddr || !f.name || !f.phone || !f.payment) {
-                showAlert("Por favor, completa todos los campos requeridos.");
+                showAlert("Por favor, complete todos los campos obligatorios.");
                 return;
             }
 
@@ -437,32 +442,22 @@
             const orderCode = getOrderCode();
             const total = document.getElementById('final-price').innerText;
 
-            // Generar Resumen Visual para el Modal de Doble Confirmación
             const summaryHtml = `
                 <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Pedido N°:</span> <span class="font-black italic text-blue-600">${orderCode}</span></div>
                 <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Carga:</span> <span class="font-bold">${f.size} (${f.qty} un.)</span></div>
                 <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Origen:</span> <span class="font-bold">${locA}</span></div>
                 <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Destino:</span> <span class="font-bold">${locB}</span></div>
-                <div class="summary-item"><span class="text-slate-400 font-bold uppercase text-[10px]">Pago:</span> <span class="font-bold text-orange-600">${f.payment}</span></div>
                 <div class="summary-item !border-none pt-4"><span class="text-slate-900 font-black uppercase text-xs">Total:</span> <span class="text-xl font-black text-slate-900">${total}</span></div>
             `;
-            
             document.getElementById('summary-content').innerHTML = summaryHtml;
-
-            // Preparar mensaje para WhatsApp
-            const origenQuery = encodeURIComponent(`${f.oriAddr}, ${locA}, Santa Fe, Argentina`);
-            const destinoQuery = encodeURIComponent(`${f.desAddr}, ${locB}, Santa Fe, Argentina`);
-            const mapRoute = `https://www.google.com/maps/dir/?api=1&origin=${origenQuery}&destination=${destinoQuery}&travelmode=driving`;
 
             let invoiceText = "No";
             if (document.getElementById('invoice-toggle').checked) {
-                invoiceText = `Sí (${document.getElementById('tax-type').value})\n` +
-                              `*DATOS FISCALES:*\n` +
-                              `- *CUIT:* ${document.getElementById('tax-id').value}\n` +
-                              `- *Razón:* ${document.getElementById('tax-name').value}\n` +
-                              `- *Domicilio:* ${document.getElementById('tax-address').value}\n` +
-                              `- *Email:* ${document.getElementById('tax-email').value}`;
+                invoiceText = `Sí (${document.getElementById('tax-type').value})`;
             }
+
+            // CORRECCIÓN: Definición de mapRoute para evitar ReferenceError
+            const mapRoute = `https://www.google.com/maps/dir/${encodeURIComponent(f.oriAddr + ', ' + locA)}/${encodeURIComponent(f.desAddr + ', ' + locB)}`;
 
             lastMessage = `🚀 *NUEVA SOLICITUD DE ENVÍO*\n\n` +
                         `*PEDIDO N°:* ${orderCode}\n` +
@@ -483,8 +478,6 @@
         function confirmAndFinish() {
             closeModal('summary-modal');
             document.getElementById('success-modal').style.display = 'flex';
-            
-            // Asignar el envío al botón final
             document.getElementById('final-btn').onclick = function() {
                 window.open(`https://wa.me/5493413753881?text=${encodeURIComponent(lastMessage)}`, '_blank');
                 closeModal('success-modal');
@@ -493,4 +486,3 @@
     </script>
 </body>
 </html>
-
